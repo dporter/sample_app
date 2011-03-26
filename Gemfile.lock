@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    ZenTest (4.5.0)
     abstract (1.0.0)
     actionmailer (3.0.5)
       actionpack (= 3.0.5)
@@ -87,8 +88,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  ZenTest
   rails (= 3.0.5)
-  rspec (= 2.0.1)
-  rspec-rails (= 2.0.1)
+  rspec
+  rspec-rails
   sqlite3
-  webrat (= 0.7.1)
+  webrat
