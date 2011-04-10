@@ -11,12 +11,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(:page => params[:page])
     @title = @user.name
   end
 
   def new
     @user = User.new
     @title = "Sign up"
+    redirect_to(root_path) unless !signed_in?
   end
 
   def create
@@ -31,6 +33,7 @@ class UsersController < ApplicationController
       @user.password_confirmation=""
       render 'new'
     end
+    
   end
 
   def edit
@@ -56,9 +59,6 @@ class UsersController < ApplicationController
 
   private
 
-  def authenticate
-    deny_access unless signed_in?
-  end
 
   def correct_user
     @user = User.find(params[:id])
